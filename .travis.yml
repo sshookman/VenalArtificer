@@ -1,0 +1,6 @@
+language: java
+jdk: oraclejdk8
+script: gradle clean test jacocoTestReport build
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -t 8189d118-2dbf-4c70-80eb-e16ee6c353e4
+
