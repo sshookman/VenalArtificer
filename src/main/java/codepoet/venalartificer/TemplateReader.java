@@ -6,10 +6,12 @@ import java.util.Scanner;
 
 public class TemplateReader {
 
-	public String read(String name) throws FileNotFoundException {
+	private static final String EXTENSION = ".ven";
+
+	public String read(final String name) throws FileNotFoundException {
 		StringBuilder result = new StringBuilder("");
 		ClassLoader classLoader = getClass().getClassLoader();
-		File file = new File(classLoader.getResource(name).getFile());
+		File file = new File(classLoader.getResource(name + EXTENSION).getFile());
 		Scanner scanner = new Scanner(file);
 
 		while (scanner.hasNextLine()) {

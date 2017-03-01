@@ -10,7 +10,7 @@ This shows up
 
 {{#if !show}}
 This does not show up
-{{#if}}
+{{if#}}
 
 {{#for item : items}}
 Item Prop 1 {{item.prop1}}
