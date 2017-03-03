@@ -8,10 +8,10 @@ public class TemplateReader {
 
 	private static final String EXTENSION = ".ven";
 
-	public String read(final String name) throws FileNotFoundException {
+	public String read(final String path, final String fileName) throws FileNotFoundException {
 		StringBuilder result = new StringBuilder("");
 		ClassLoader classLoader = getClass().getClassLoader();
-		File file = new File(classLoader.getResource(name + EXTENSION).getFile());
+		File file = new File(classLoader.getResource(path + "/" + fileName + EXTENSION).getFile());
 		Scanner scanner = new Scanner(file);
 
 		while (scanner.hasNextLine()) {
