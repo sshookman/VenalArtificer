@@ -7,7 +7,6 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Map;
 
-//TODO: Get it working, then clean this crap up
 public class TemplateBuilder {
 
 	private final TemplateReader templateReader = new TemplateReader();
@@ -23,7 +22,6 @@ public class TemplateBuilder {
 			template = buildConditionals(template, data);
 			template = buildLoops(template, data);
 			template = buildValues(template, data);
-			System.out.println(template);
 			return template;
 		} catch (FileNotFoundException ex) {
 			throw new VenalArtificerException("Template File Not Found");
@@ -43,12 +41,7 @@ public class TemplateBuilder {
 		String variable = tagBlock.substring(OPEN_IF.length() + 1, tagBlock.indexOf(CLOSE_TAG));
 		Boolean show = variable.startsWith(NEGATION) ? !((Boolean) data.get(variable.substring(1))) : (Boolean) data.get(variable);
 
-		if (show) {
-			template = template.substring(0, start) + content + template.substring(end);
-		} else {
-			template = template.substring(0, start) + template.substring(end);
-		}
-
+		template = template.replace(tagBlock, show ? content.trim() : "");
 		return buildConditionals(template, data);
 	}
 
@@ -70,10 +63,10 @@ public class TemplateBuilder {
 		StringBuilder contentBuilder = new StringBuilder();
 		for (Map<String, Object> itemData : itemList) {
 			String replacedContent = buildValues(content, itemData, OPEN_TAG + item + ".", CLOSE_TAG);
-			contentBuilder.append(replacedContent);
+			contentBuilder.append("\n" + replacedContent.trim());
 		}
 
-		template = template.substring(0, start) + contentBuilder.toString() + template.substring(end);
+		template = template.replace(tagBlock, contentBuilder.toString().trim());
 		return buildLoops(template, data);
 	}
 

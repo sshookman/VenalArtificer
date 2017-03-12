@@ -1,17 +1,13 @@
 This is plain text
-
 Integer {{num}}
 Double {{dub}}
 Text {{text}}
-
 {{#if show}}
 This shows up
 {{if#}}
-
 {{#if !show}}
 This does not show up
 {{if#}}
-
 {{#for item : items}}
 Item Prop 1 {{item.prop1}}
 Item Prop 2 {{item.prop2}}

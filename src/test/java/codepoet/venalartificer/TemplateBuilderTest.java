@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
@@ -32,17 +33,15 @@ public class TemplateBuilderTest {
 
 		String response = TEMPLATE_BUILDER.render("test-template", data);
 		assertNotNull(response);
-		//assertEquals(EXPECTED_RESPONSE, response);
+		assertEquals(EXPECTED_RESPONSE, response);
 	}
 
-	private static final String EXPECTED_RESPONSE = "This is plain text\n"
-			+ "\n"
+	private static final String EXPECTED_RESPONSE = ""
+			+ "This is plain text\n"
 			+ "Integer 123\n"
 			+ "Double 12.3\n"
 			+ "Text Hello World\n"
-			+ "\n"
 			+ "This shows up\n"
-			+ "\n"
 			+ "\n"
 			+ "Item Prop 1 1\n"
 			+ "Item Prop 2 2\n"
