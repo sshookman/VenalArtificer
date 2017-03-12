@@ -1,6 +1,3 @@
-group = 'codepoet'
-version = '1.0.0'
-
 buildscript {
 	repositories {
 		mavenCentral()
@@ -27,8 +24,9 @@ pitest {
 }
 
 jar {
-	baseName = 'venalartificer'
-	version = '0.0.1-SNAPSHOT'
+	baseName = 'venal-artificer'
+	group = 'codepoet'
+	version = '1.0.0'
 }
 
 mainClassName = "codepoet.venalartificer.Main"
