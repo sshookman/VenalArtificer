@@ -11,6 +11,22 @@ import org.junit.Test;
 public class TemplateBuilderTest {
 
 	private static final TemplateBuilder TEMPLATE_BUILDER = new TemplateBuilder("templates");
+	private static final String EXPECTED_RESPONSE = ""
+			+ "This is plain text\n"
+			+ "Integer 123\n"
+			+ "Double 12.3\n"
+			+ "Text Hello World\n"
+			+ "This shows up\n"
+			+ "\n"
+			+ "Item Prop 1 1\n"
+			+ "Item Prop 2 2\n"
+			+ "Item Prop 3 3\n"
+			+ "Item Prop 1 1\n"
+			+ "Item Prop 2 2\n"
+			+ "Item Prop 3 3\n"
+			+ "Item Prop 1 1\n"
+			+ "Item Prop 2 2\n"
+			+ "Item Prop 3 3\n";
 
 	@Test
 	public void testRender() {
@@ -35,21 +51,4 @@ public class TemplateBuilderTest {
 		assertNotNull(response);
 		assertEquals(EXPECTED_RESPONSE, response);
 	}
-
-	private static final String EXPECTED_RESPONSE = ""
-			+ "This is plain text\n"
-			+ "Integer 123\n"
-			+ "Double 12.3\n"
-			+ "Text Hello World\n"
-			+ "This shows up\n"
-			+ "\n"
-			+ "Item Prop 1 1\n"
-			+ "Item Prop 2 2\n"
-			+ "Item Prop 3 3\n"
-			+ "Item Prop 1 1\n"
-			+ "Item Prop 2 2\n"
-			+ "Item Prop 3 3\n"
-			+ "Item Prop 1 1\n"
-			+ "Item Prop 2 2\n"
-			+ "Item Prop 3 3\n";
 }

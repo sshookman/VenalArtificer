@@ -41,8 +41,7 @@ public class TemplateBuilder {
 		String variable = tagBlock.substring(OPEN_IF.length() + 1, tagBlock.indexOf(CLOSE_TAG));
 		Boolean show = variable.startsWith(NEGATION) ? !((Boolean) data.get(variable.substring(1))) : (Boolean) data.get(variable);
 
-		template = template.replace(tagBlock, show ? content.trim() : "");
-		return buildConditionals(template, data);
+		return buildConditionals(template.replace(tagBlock, show ? content.trim() : ""), data);
 	}
 
 	private String buildLoops(String template, final Map<String, Object> data) {
@@ -66,8 +65,7 @@ public class TemplateBuilder {
 			contentBuilder.append("\n" + replacedContent.trim());
 		}
 
-		template = template.replace(tagBlock, contentBuilder.toString().trim());
-		return buildLoops(template, data);
+		return buildLoops(template.replace(tagBlock, contentBuilder.toString().trim()), data);
 	}
 
 	private String buildValues(String template, final Map<String, Object> data, final String startsWith, final String endsWith) {
@@ -82,8 +80,7 @@ public class TemplateBuilder {
 		String variable = value.substring(value.indexOf(startsWith) + startsWith.length(), value.indexOf(endsWith));
 		Object datum = data.get(variable);
 
-		template = template.replace(value, datum.toString());
-		return buildValues(template, data, startsWith, endsWith);
+		return buildValues(template.replace(value, datum.toString()), data, startsWith, endsWith);
 	}
 
 	private String buildValues(String template, final Map<String, Object> data) {
