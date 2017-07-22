@@ -19,9 +19,11 @@ public class TemplateBuilder {
 	public String render(final String fileName, final Map<String, Object> data) {
 		try {
 			String template = templateReader.read(path, fileName);
-			template = buildConditionals(template, data);
-			template = buildLoops(template, data);
-			template = buildValues(template, data);
+			if (data != null && !data.isEmpty()) {
+				template = buildConditionals(template, data);
+				template = buildLoops(template, data);
+				template = buildValues(template, data);
+			}
 			return template;
 		} catch (FileNotFoundException ex) {
 			throw new VenalArtificerException("Template File Not Found");
